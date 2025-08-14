@@ -1,283 +1,274 @@
-// ====== CONFIG ======
-const BRAND_NAME = "LUNARA";
-const DEFAULT_CURRENCY = "ARS";
+/* ========= (12 productos) ========= */
+/* Reemplazá las rutas por tus archivos en /img/catalogo/ */
+const PRODUCTS = [
+  { id:1, name:"Conjunto Luna", category:"Conjuntos", price:18990, stock:"inmediata",
+    images:["img/catalogo/lenceria2.jpeg"],
+    desc:"Suave y cómodo. Talles S–XL. Colores: negro, lila, nude." },
+  { id:2, name:"Conjunto Brisa", category:"Conjuntos", price:20990, stock:"pedido",
+    images:["img/catalogo/lenceria3.jpeg"],
+    desc:"Soporte medio. Talles S–XL. Colores: celeste, coral, blanco." },
+  { id:3, name:"Top Nube", category:"Tops", price:9990, stock:"inmediata",
+    images:["img/catalogo/lenceria4.jpeg"],
+    desc:"Top básico para todos los días. Talles S–L." },
+  { id:4, name:"Conjunto Aurora", category:"Conjuntos", price:22990, stock:"pedido",
+    images:["img/catalogo/lenceria5.jpeg"],
+    desc:"Encaje suave, muy cómodo. Talles S–XL." },
+  { id:5, name:"Top Brillante", category:"Tops", price:11990, stock:"inmediata",
+    images:["img/catalogo/lenceria6.jpeg"],
+    desc:"Top con soporte ligero. Talles S–L." },
+  { id:6, name:"Conjunto Cielo", category:"Conjuntos", price:19990, stock:"pedido",
+    images:["img/catalogo/lenceria7.jpeg"],
+    desc:"Cómodo y liviano. Talles S–XL." },
+  { id:7, name:"Conjunto Duna", category:"Conjuntos", price:21990, stock:"inmediata",
+    images:["img/catalogo/lenceria8.jpeg"],
+    desc:"Textura suave. Talles S–XL." },
+  { id:8, name:"Top Coral", category:"Tops", price:8990, stock:"inmediata",
+    images:["img/catalogo/lenceria9.jpeg"],
+    desc:"Ligero y fresco. Talles S–L." },
+  { id:9, name:"Conjunto Selene", category:"Conjuntos", price:23990, stock:"pedido",
+    images:["img/catalogo/lenceria10.jpeg"],
+    desc:"Encaje premium. Talles S–XL." },
+  { id:10, name:"Top Mar", category:"Tops", price:10990, stock:"inmediata",
+    images:["img/catalogo/lenceria11.jpeg"],
+    desc:"Confort diario. Talles S–L." },
+  { id:11, name:"Conjunto Estela", category:"Conjuntos", price:25990, stock:"pedido",
+    images:["img/catalogo/lenceria12.jpeg"],
+    desc:"Linea premium. Talles S–XL." },
+  { id:12, name:"Conjunto Nórdico", category:"Conjuntos", price:18990, stock:"inmediata",
+    images:["img/catalogo/lenceria13.jpeg"],
+    desc:"Suave al tacto. Talles S–XL." },
+];
 
-// === Reemplazá por los reales ===
-const WHATSAPP_NUMBER = "5491100000000";
-const EMAIL_ADDRESS   = "hola@lunara.test";
-const INSTAGRAM_URL   = "https://instagram.com/lunara.ar";
-const PHONE_DISPLAY   = "+54 9 11 0000-0000";
-// ===============================
+/* ========= Estado y helpers ========= */
+const $ = (s,ctx=document)=>ctx.querySelector(s);
+const $$ = (s,ctx=document)=>Array.from(ctx.querySelectorAll(s));
 
-// ====== UTIL ======
-const $  = (sel) => document.querySelector(sel);
-const $$ = (sel) => Array.from(document.querySelectorAll(sel));
-const fmt = (n) =>
-  new Intl.NumberFormat("es-AR", { style: "currency", currency: DEFAULT_CURRENCY, maximumFractionDigits: 0 }).format(n);
+let filtered = [...PRODUCTS];
+let shown = 0;
+const PAGE = 9; // 9 por tanda
 
-// ====== THEME ======
-const root = document.documentElement;
-$("#themeToggle")?.addEventListener("click", () => root.classList.toggle("dark"));
+const cart = [];
+const currency = n => `$ ${n.toLocaleString('es-AR')}`;
 
-// ====== HEADER / CTA / FOOTER LINKS ======
-$("#year").textContent = new Date().getFullYear();
-const headerWordmark = $("#brandWordmark"); if (headerWordmark) headerWordmark.textContent = BRAND_NAME;
+/* ========= Render catálogo ========= */
+const grid = $("#catalogGrid");
+const searchInput = $("#searchInput");
+const catSelect = $("#categorySelect");
+const stockSelect = $("#stockSelect");
+const sortSelect = $("#sortSelect");
+const loadMoreBtn = $("#loadMore");
 
-const wappBase = (text) => `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
-const WAPP_MSG_PREFIX = `¡Hola! Quiero hacer un pedido en ${BRAND_NAME}:`;
-
-$("#ctaPrincipal").href = wappBase("Hola, quiero comprar ahora 🙌");
-$("#wappLink").href      = wappBase("Hola, me gustaría hacer una consulta ✨");
-$("#wappFloat").href     = wappBase("Hola, ¿me ayudás con un pedido?");
-$("#footerWapp").href    = wappBase("Hola, vengo desde el sitio 🌙");
-$("#footerInsta").href   = INSTAGRAM_URL;
-$("#footerMail").href    = `mailto:${EMAIL_ADDRESS}`;
-$("#footerMail").textContent = EMAIL_ADDRESS;
-$("#footerPhone").textContent = PHONE_DISPLAY;
-
-// ====== DATA / RENDER ======
-let PRODUCTS = [];
-let filtered = [];
-let cart = [];
-let page = 1;
-const PAGE_SIZE = 9;
-
-async function loadProducts() {
-  try {
-    const res = await fetch("products.json");
-    PRODUCTS = await res.json();
-    initCategories(PRODUCTS);
-    applyFilters(); // hará render con paginación
-  } catch (e) {
-    console.error("Error cargando products.json", e);
-    $("#catalogGrid").innerHTML = "<p class='small'>No pudimos cargar el catálogo. Reintentá más tarde.</p>";
-  }
-}
-
-function initCategories(list){
-  const select = $("#categorySelect");
-  const cats = ["all", ...new Set(list.map(p => p.category))];
-  cats.forEach(c => {
+function fillFilters(){
+  const cats = [...new Set(PRODUCTS.map(p => p.category))];
+  cats.forEach(c=>{
     const opt = document.createElement("option");
-    opt.value = c;
-    opt.textContent = c === "all" ? "Todas las categorías" : c;
-    select.appendChild(opt);
+    opt.value = c; opt.textContent = c;
+    catSelect.appendChild(opt);
   });
 }
-
-function cardHTML(p){
-  const statusText = p.availability === "inmediata" ? "Entrega inmediata" : "Por pedido";
-  const firstImg = (p.images && p.images[0]) || p.image || "";
-  return `
-    <div class="card reveal">
-      <div class="media" data-id="${p.id}" role="button" tabindex="0" aria-label="Ver fotos de ${p.name}"
-           style="background-image:url('${firstImg}');background-size:cover;background-position:center;"></div>
-      <div class="body">
-        <div class="card-head">
-          <h3 style="margin:0">${p.name}</h3>
-          <span class="badge">${statusText}</span>
-        </div>
-        <p class="small">${p.category}</p>
-        <p class="price">${fmt(p.price)}</p>
-        ${p.offer ? `<p class="small"><strong>Oferta:</strong> ${p.offer}</p>` : ""}
-        <p class="small">${p.description || ""}</p>
-        <div class="actions">
-          <button class="btn btn-sm" data-add="${p.id}" aria-label="Agregar ${p.name} al pedido">Agregar al pedido</button>
-          <a class="btn btn-sm btn-secondary" href="${wappBase(`${WAPP_MSG_PREFIX} ${p.name} (${fmt(p.price)})`)}" target="_blank" rel="noopener">Consultar</a>
-        </div>
-      </div>
-    </div>
-  `;
-}
-
-function visibleList(){
-  return filtered.slice(0, page * PAGE_SIZE);
-}
-
-function render(){
-  $("#catalogGrid").innerHTML = visibleList().map(cardHTML).join("");
-  setupReveal();
-  // mostrar/ocultar botón "Mostrar más"
-  const more = $("#loadMore");
-  if (filtered.length > page * PAGE_SIZE) {
-    more.style.display = "inline-flex";
-  } else {
-    more.style.display = "none";
-  }
-}
-
-// ====== FILTERS & SORT ======
-$("#searchInput").addEventListener("input", applyFilters);
-$("#categorySelect").addEventListener("change", applyFilters);
-$("#stockSelect").addEventListener("change", applyFilters);
-$("#sortSelect").addEventListener("change", applyFilters);
 
 function applyFilters(){
-  page = 1;
-  const q = $("#searchInput").value.toLowerCase().trim();
-  const cat = $("#categorySelect").value;
-  const stock = $("#stockSelect").value;
-  const sort = $("#sortSelect").value;
+  const q = (searchInput.value||"").toLowerCase();
+  const cat = catSelect.value;
+  const stk = stockSelect.value;
+  const sort = sortSelect.value;
 
-  filtered = PRODUCTS.filter(p =>
-    (cat === "all" || p.category === cat) &&
-    (stock === "all" || p.availability === stock) &&
-    (p.name.toLowerCase().includes(q) || (p.description||"").toLowerCase().includes(q))
-  );
-
-  if (sort === "priceAsc") filtered.sort((a,b)=>a.price-b.price);
-  if (sort === "priceDesc") filtered.sort((a,b)=>b.price-a.price);
-
-  render();
-}
-
-$("#loadMore").addEventListener("click", ()=>{ page += 1; render(); });
-
-// ====== CART ======
-document.addEventListener("click", (e)=>{
-  const addId = e.target?.dataset?.add;
-  if (addId){
-    const item = PRODUCTS.find(p => String(p.id) === String(addId));
-    if (item){ cart.push(item); updateCart(); }
-  }
-});
-
-function updateCart(){
-  $("#cartCount").textContent = String(cart.length);
-
-  const ul = $("#cartList");
-  ul.innerHTML = "";
-  cart.forEach((it, idx) => {
-    const li = document.createElement("li");
-    li.innerHTML = `${it.name} <button aria-label="Quitar">×</button>`;
-    li.querySelector("button").addEventListener("click", ()=>{
-      cart.splice(idx,1); updateCart();
-    });
-    ul.appendChild(li);
+  filtered = PRODUCTS.filter(p=>{
+    const qok = !q || p.name.toLowerCase().includes(q);
+    const cok = cat==="all" || p.category===cat;
+    const sok = stk==="all" || p.stock===stk;
+    return qok && cok && sok;
   });
 
-  const total = cart.reduce((acc,it)=>acc+it.price,0);
-  $("#cartTotal").textContent = fmt(total);
-  const msg = `${WAPP_MSG_PREFIX}\n\n${cart.map(c=>`• ${c.name} - ${fmt(c.price)}`).join("\n")}\n\nTotal: ${fmt(total)}\n\n¿Me confirmás talle y color?`;
-  $("#cartWhatsApp").href = wappBase(msg);
+  if(sort==="priceAsc") filtered.sort((a,b)=>a.price-b.price);
+  if(sort==="priceDesc") filtered.sort((a,b)=>b.price-a.price);
 
-  if (cart.length > 0) openCartDrawer();
+  shown = 0;
+  grid.innerHTML = "";
+  revealMore();
 }
 
-// ====== Drawer carrito (mobile) ======
-const cartEl = document.querySelector(".cart");
-const cartFab = document.getElementById("cartFab");
-const cartClose = document.getElementById("cartClose");
+function cardTemplate(p){
+  const badge = p.stock==="inmediata" ? "Entrega inmediata" : "Por pedido";
+  return `
+  <article class="card reveal" tabindex="-1">
+    <img class="media" src="${p.images[0]}" alt="${p.name}" data-id="${p.id}" />
+    <div class="body">
+      <div class="card-head">
+        <h3>${p.name}</h3>
+        <span class="badge">${badge}</span>
+      </div>
+      <p class="small">${p.category}</p>
+      <p class="price">${currency(p.price)}</p>
+      <p class="small">${p.desc}</p>
+      <div class="actions">
+        <button class="btn btn-outline" data-add="${p.id}">Agregar al pedido</button>
+        <button class="btn btn-secondary" data-consulta="${p.id}">Consultar</button>
+      </div>
+    </div>
+  </article>`;
+}
+
+function revealMore(){
+  const slice = filtered.slice(shown, shown+PAGE);
+  slice.forEach(p=>{
+    grid.insertAdjacentHTML("beforeend", cardTemplate(p));
+  });
+  shown += slice.length;
+
+  requestAnimationFrame(()=>{
+    $$(".card.reveal", grid).forEach(el=>el.classList.add("in-view"));
+  });
+
+  loadMoreBtn.style.display = shown < filtered.length ? "inline-block" : "none";
+}
+
+/* ========= Carrito ========= */
+const cartList = $("#cartList");
+const cartTotal = $("#cartTotal");
+const cartBtn = $("#cartWhatsApp");
+const cartFab = $("#cartFab");
+const cartBox = $(".cart");
+const cartClose = $("#cartClose");
+const cartCount = $("#cartCount");
+
+function refreshCartUI(){
+  cartList.innerHTML = "";
+  let total = 0;
+  cart.forEach(item=>{
+    total += item.price;
+    const li = document.createElement("li");
+    li.innerHTML = `
+      ${item.name} — ${currency(item.price)}
+      <button data-remove="${item.id}">×</button>
+    `;
+    cartList.appendChild(li);
+  });
+  cartTotal.textContent = currency(total);
+  cartCount.textContent = cart.length;
+
+  const lines = cart.map(i=>`• ${i.name} — ${currency(i.price)}`).join("%0A");
+  const text = `Hola! Quiero finalizar mi pedido:%0A${lines}%0ATotal: ${currency(total)}`;
+  cartBtn.href = `https://wa.me/5491100000000?text=${text}`;
+  $("#wappLink").href = `https://wa.me/5491100000000?text=Hola!%20Quiero%20hacer%20una%20consulta%20🙂`;
+  $("#wappFloat").href = $("#wappLink").href;
+  $("#emailLink").href = `mailto:hola@lunara.test?subject=Consulta%20GEMA&body=${decodeURIComponent(text)}`;
+}
 
 function openCartDrawer(){
-  if (window.matchMedia("(max-width: 560px)").matches) {
-    cartEl.classList.add("open");
+  if(window.matchMedia("(max-width:560px)").matches){
+    cartBox.classList.add("open");
     document.body.classList.add("has-drawer");
-    cartEl.setAttribute("aria-hidden", "false");
   }
 }
 function closeCartDrawer(){
-  if (window.matchMedia("(max-width: 560px)").matches) {
-    cartEl.classList.remove("open");
-    document.body.classList.remove("has-drawer");
-    cartEl.setAttribute("aria-hidden", "true");
-  }
+  cartBox.classList.remove("open");
+  document.body.classList.remove("has-drawer");
 }
-cartFab?.addEventListener("click", (e)=>{
-  if (window.matchMedia("(max-width: 560px)").matches) {
-    e.preventDefault();
-    cartEl.classList.contains("open") ? closeCartDrawer() : openCartDrawer();
-  }
-});
-cartClose?.addEventListener("click", (e)=>{ e.preventDefault(); closeCartDrawer(); });
 
-// ====== FORM SUBMIT -> WhatsApp ======
-$("#contactForm").addEventListener("submit", (e)=>{
-  e.preventDefault();
-  const name = $("#name").value.trim();
-  const email = $("#email").value.trim();
-  const message = $("#message").value.trim();
-  window.open(wappBase(`Hola! Soy ${name} (${email}). ${message}`), "_blank", "noopener");
-});
-
-// ====== GALERÍA MODAL ======
+/* ========= Modal galería (simple con 1 img) ========= */
 const modal = $("#galleryModal");
 const modalImg = $("#modalImg");
+const modalClose = $("#modalClose");
 const modalPrev = $("#modalPrev");
 const modalNext = $("#modalNext");
-const modalClose = $("#modalClose");
 const modalDots = $("#modalDots");
-let modalIndex = 0;
-let modalImages = [];
+let currentIndex = 0;
+let currentImages = [];
 
-function openModal(images, start=0){
-  modalImages = images && images.length ? images : [];
-  if (!modalImages.length) return;
-  modalIndex = start;
-  updateModal();
-  modal.classList.add("open");
-  modal.setAttribute("aria-hidden","false");
+function openModal(images, idx=0){
+  currentImages = images;
+  currentIndex = idx;
+  if(modalImg) modalImg.src = currentImages[currentIndex];
+  if(modal) modal.classList.add("open");
 }
-function closeModal(){
-  modal.classList.remove("open");
-  modal.setAttribute("aria-hidden","true");
-}
-function updateModal(){
-  modalImg.src = modalImages[modalIndex];
-  // dots
-  modalDots.innerHTML = "";
-  modalImages.forEach((_,i)=>{
-    const b = document.createElement("button");
-    if (i===modalIndex) b.classList.add("active");
-    b.addEventListener("click",()=>{ modalIndex=i; updateModal(); });
-    modalDots.appendChild(b);
-  });
-}
-modalPrev.addEventListener("click", ()=>{ modalIndex = (modalIndex-1+modalImages.length)%modalImages.length; updateModal(); });
-modalNext.addEventListener("click", ()=>{ modalIndex = (modalIndex+1)%modalImages.length; updateModal(); });
-modalClose.addEventListener("click", closeModal);
-modal.addEventListener("click", (e)=>{ if (e.target === modal) closeModal(); });
-document.addEventListener("keydown", (e)=>{ if (e.key==="Escape" && modal.classList.contains("open")) closeModal(); });
+function closeModal(){ if(modal) modal.classList.remove("open"); }
+function prevImg(){ if(!currentImages.length) return; currentIndex = (currentIndex - 1 + currentImages.length)%currentImages.length; if(modalImg) modalImg.src = currentImages[currentIndex]; }
+function nextImg(){ if(!currentImages.length) return; currentIndex = (currentIndex + 1)%currentImages.length; if(modalImg) modalImg.src = currentImages[currentIndex]; }
 
-// abrir desde card (click/enter en .media)
-$("#catalogGrid").addEventListener("click",(e)=>{
-  const el = e.target.closest(".media");
-  if (!el) return;
-  const id = el.dataset.id;
-  const p = PRODUCTS.find(x=>String(x.id)===String(id));
-  if (p && p.images && p.images.length) openModal(p.images, 0);
-});
-$("#catalogGrid").addEventListener("keydown",(e)=>{
-  if ((e.key==="Enter" || e.key===" ") && e.target.classList.contains("media")){
-    e.preventDefault();
-    const id = e.target.dataset.id;
-    const p = PRODUCTS.find(x=>String(x.id)===String(id));
-    if (p && p.images && p.images.length) openModal(p.images, 0);
+/* ========= Back-to-top / bottom ========= */
+const toTop = $("#toTop");
+const toTopIcon = $("#toTopIcon");
+
+function updateTopButton(){
+  const nearTop = window.scrollY < 80;
+  if(nearTop){
+    toTop.setAttribute("aria-label","Ir abajo");
+    toTop.dataset.mode = "down";
+    toTopIcon.innerHTML = `<path d="M12 5v14m0 0-6-6m6 6 6-6" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>`;
+  }else{
+    toTop.setAttribute("aria-label","Volver arriba");
+    toTop.dataset.mode = "up";
+    toTopIcon.innerHTML = `<path d="M12 19V5m0 0-6 6m6-6 6 6" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>`;
+  }
+}
+
+toTop.addEventListener("click", (e)=>{
+  e.preventDefault();
+  if(toTop.dataset.mode === "down"){
+    window.scrollTo({ top: document.body.scrollHeight, behavior:"smooth" });
+  }else{
+    window.scrollTo({ top: 0, behavior:"smooth" });
   }
 });
 
-// ====== Reveal on scroll (con fallback) ======
-let io;
-function setupReveal(){
-  const cards = $$(".card.reveal");
-  if (!cards.length) return;
+/* ========= Tema ========= */
+$("#themeToggle").addEventListener("click", ()=>{
+  document.documentElement.classList.toggle("dark");
+});
 
-  if (typeof IntersectionObserver === "undefined") {
-    cards.forEach(c => c.classList.add("in-view"));
-    return;
+/* ========= Listeners ========= */
+document.addEventListener("click", (e)=>{
+  const addId = e.target.closest("[data-add]")?.dataset.add;
+  if(addId){
+    const prod = PRODUCTS.find(p=>p.id===Number(addId));
+    cart.push(prod);
+    refreshCartUI();
+    openCartDrawer();
   }
-  if (!io){
-    io = new IntersectionObserver((entries)=>{
-      entries.forEach(entry=>{
-        if (entry.isIntersecting){
-          entry.target.classList.add("in-view");
-          io.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1, rootMargin: "0px 0px -8% 0px" });
+
+  const remId = e.target.closest("[data-remove]")?.dataset.remove;
+  if(remId){
+    const i = cart.findIndex(p=>p.id===Number(remId));
+    if(i>-1){ cart.splice(i,1); refreshCartUI(); }
   }
-  cards.forEach(c=> io.observe(c));
+
+  const img = e.target.closest(".media[data-id]");
+  if(img){
+    const id = Number(img.dataset.id);
+    const prod = PRODUCTS.find(p=>p.id===id);
+    if(prod?.images?.length) openModal(prod.images, 0);
+  }
+
+  if(e.target===modal || e.target===modalClose) closeModal();
+  if(e.target===modalPrev) prevImg();
+  if(e.target===modalNext) nextImg();
+});
+
+["input","change"].forEach(ev=>{
+  searchInput.addEventListener(ev, applyFilters);
+  catSelect.addEventListener(ev, applyFilters);
+  stockSelect.addEventListener(ev, applyFilters);
+  sortSelect.addEventListener(ev, applyFilters);
+});
+loadMoreBtn.addEventListener("click", revealMore);
+
+cartFab.addEventListener("click",(e)=>{
+  e.preventDefault();
+  openCartDrawer();
+});
+$("#cartClose").addEventListener("click", closeCartDrawer);
+window.addEventListener("scroll", updateTopButton);
+
+/* ========= Init ========= */
+function init(){
+  const y = new Date().getFullYear();
+  const yNode = document.getElementById("year");
+  if(yNode) yNode.textContent = y;
+
+  fillFilters();
+  applyFilters();
+  refreshCartUI();
+  updateTopButton();
 }
-
-// Init
-loadProducts();
+document.addEventListener("DOMContentLoaded", init);

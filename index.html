@@ -4,25 +4,25 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>LUNARA | Catálogo</title>
+    <title>GEMA | Catálogo</title>
     <meta name="description"
-        content="LUNARA — Catálogo simple con entrega inmediata y por pedido. Pedidos por WhatsApp. Envíos a todo el país." />
+        content="GEMA — Conjuntos modernos y cómodos. Pedidos por WhatsApp. Envíos a todo el país." />
     <script>document.documentElement.classList.add('js');</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="styles.css" />
 </head>
 
-<body>
+<body id="top">
     <!-- HEADER -->
     <header class="site-header">
         <div class="container header-inner">
-            <a class="brand" href="#" aria-label="LUNARA inicio">
+            <a class="brand" href="#" aria-label="GEMA inicio">
                 <img src="assets/logo.svg" alt="" class="logo" aria-hidden="true" />
-                <span id="brandWordmark" class="wordmark">LUNARA</span>
+                <span id="brandWordmark" class="wordmark">GEMA</span>
             </a>
             <nav class="nav">
                 <a href="#catalogo">Catálogo</a>
@@ -40,8 +40,7 @@
             <h1>Conjuntos modernos, cómodos y <span class="highlight">listos para regalar</span></h1>
             <p>🔥 <strong>Oferta HOY: 10% OFF</strong> en tu primer pedido. 🚚 Envíos a todo el país.</p>
             <div class="hero-cta">
-                <a id="ctaPrincipal" class="btn btn-primary btn-lg" href="#" target="_blank" rel="noopener">Comprar
-                    ahora</a>
+                <a id="ctaPrincipal" class="btn btn-primary btn-lg" href="#catalogo" rel="noopener">Comprar ahora</a>
                 <a href="#catalogo" class="btn btn-secondary btn-lg">Ver catálogo completo</a>
             </div>
             <ul class="trust">
@@ -109,7 +108,7 @@
         </div>
     </section>
 
-    <!-- CÓMO FUNCIONA (simple) -->
+    <!-- CÓMO FUNCIONA -->
     <section id="como-funciona" class="container how">
         <header class="section-header">
             <h2>¿Cómo funciona?</h2>
@@ -121,7 +120,7 @@
         </ol>
     </section>
 
-    <!-- PREGUNTAS FRECUENTES (simple) -->
+    <!-- PREGUNTAS FRECUENTES -->
     <section id="faq" class="container faq">
         <header class="section-header">
             <h2>Preguntas frecuentes</h2>
@@ -140,7 +139,7 @@
         </details>
     </section>
 
-    <!-- CONTACTO (simple centrado) -->
+    <!-- CONTACTO -->
     <section id="contacto" class="container contact">
         <header class="section-header">
             <h2>Contacto</h2>
@@ -156,44 +155,104 @@
                 chat</a></p>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="site-footer">
-        <div class="container footer-inner">
-            <div class="footer-brand">LUNARA</div>
-            <ul class="footer-links">
-                <li><a id="footerWapp" href="#" target="_blank" rel="noopener">WhatsApp</a></li>
-                <li><a id="footerInsta" href="#" target="_blank" rel="noopener">@lunara.ar</a></li>
-                <li><a id="footerMail" href="#">hola@lunara.test</a></li>
-                <li><span id="footerPhone">+54 9 11 0000-0000</span></li>
-            </ul>
-            <p class="small">© <span id="year"></span> LUNARA — Hecho con ♥</p>
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer-f3" id="footer">
+        <div class="footer-wrap container">
+            <!-- Columna 1 -->
+            <div class="f3-brand">
+                <h3 class="f3-title">GEMA</h3>
+                <p class="f3-text">
+                    Conjuntos cómodos y modernos. Pedidos por WhatsApp. Envíos a todo el país.
+                </p>
+
+                <a class="f3-cta btn btn-primary" href="#catalogo">
+                    <span>Empezar mi pedido</span>
+                    <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M5 12h12m0 0-5-5m5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </a>
+
+                <div class="f3-social">
+                    <a class="chip" href="https://instagram.com/lunara.ar" target="_blank" rel="noopener"
+                        aria-label="Instagram">
+                        <svg class="ico" viewBox="0 0 24 24">
+                            <path fill="currentColor"
+                                d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3Zm5 3.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5Zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5ZM18 6.8a1.2 1.2 0 1 1-1.2 1.2A1.2 1.2 0 0 1 18 6.8Z" />
+                        </svg>
+                    </a>
+                    <a class="chip" href="mailto:hola@lunara.test" aria-label="Email">
+                        <svg class="ico" viewBox="0 0 24 24">
+                            <path fill="currentColor"
+                                d="M3 6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3Zm3-1a1 1 0 0 0-1 1v.34l7 4.2 7-4.2V6a1 1 0 0 0-1-1Zm13 4.66-6.59 3.95a2 2 0 0 1-1.82 0L4 9.66V18a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1Z" />
+                        </svg>
+                    </a>
+                    <a class="chip" href="https://wa.me/5491100000000" target="_blank" rel="noopener"
+                        aria-label="WhatsApp">
+                        <svg class="ico" viewBox="0 0 24 24">
+                            <path fill="currentColor"
+                                d="M12 2a10 10 0 0 0-8.66 15.08L2 22l5.11-1.34A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.09-1.12l-.29-.18-2.42.63.65-2.35-.19-.3A8 8 0 1 1 12 20Zm4.87-5.26c-.27-.14-1.6-.79-1.85-.87s-.43-.14-.61.14-.7.86-.86 1.04-.32.2-.59.07a6.55 6.55 0 0 1-1.93-1.19 7 7 0 0 1-1.3-1.61c-.15-.26 0-.4.11-.54s.26-.32.39-.49a1.82 1.82 0 0 0 .26-.43.5.5 0 0 0 0-.47c-.07-.14-.61-1.47-.84-2s-.45-.46-.61-.46h-.52a1 1 0 0 0-.72.34 3.05 3.05 0 0 0-.95 2.26 5.31 5.31 0 0 0 1.1 2.82 12.12 12.12 0 0 0 4.68 4 4.64 4.64 0 0 0 2.84.59 2.41 2.41 0 0 0 1.62-1.12 2 2 0 0 0 .14-1.12c-.06-.1-.24-.16-.51-.3Z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Columna 2 -->
+            <nav class="f3-nav" aria-label="Navegación secundaria">
+                <h4>Navegación</h4>
+                <ul>
+                    <li><a href="#catalogo">Catálogo</a></li>
+                    <li><a href="#como-funciona">Cómo funciona</a></li>
+                    <li><a href="#faq">Preguntas</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+
+            <!-- Columna 3 -->
+            <div class="f3-contact">
+                <h4>Contacto</h4>
+                <dl>
+                    <dt>WhatsApp</dt>
+                    <dd><a href="https://wa.me/5491100000000" target="_blank" rel="noopener">+54 9 11 0000‑0000</a></dd>
+                    <dt>Email</dt>
+                    <dd><a href="mailto:hola@lunara.test">hola@lunara.test</a></dd>
+
+                    <!-- NUEVO: Ubicación -->
+                    <dt>Ubicación</dt>
+                    <dd>
+                        <a href="https://maps.google.com/?q=Ñuñoa,+Santiago,+Chile" target="_blank" rel="noopener">
+                            José C. Paz, Buenos Aires, Argentina
+                        </a>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+
+        <div class="f3-copy">
+            <div class="container f3-copy-inner">
+                <p>© <span id="year"></span> GEMA. Hecho con <span class="heart">❤</span></p>
+            </div>
         </div>
     </footer>
 
     <!-- FAB CARRITO -->
     <a id="cartFab" class="cart-fab" href="#catalogo" aria-label="Abrir carrito">🛒 <span id="cartCount">0</span></a>
 
-<!-- FAB WhatsApp (círculo CSS + glyph SVG) -->
-<a id="wappFloat"
-   class="wapp-float"
-   href="#"
-   target="_blank"
-   rel="noopener"
-   aria-label="Chat por WhatsApp">
-  <!-- Solo el glyph; el círculo lo pone el CSS -->
-  <svg class="wa-glyph" viewBox="0 0 24 24" aria-hidden="true">
-    <path d="M16.511 13.757c-.084-.14-.305-.223-.637-.39-.332-.167-1.962-.964-2.266-1.074-.305-.112-.526-.168-.747.167-.223.334-.857 1.073-1.051 1.296-.195.223-.387.25-.718.084-.334-.167-1.408-.518-2.683-1.651-.992-.885-1.661-1.977-1.856-2.311-.194-.334-.021-.515.146-.681.15-.149.334-.387.5-.58.167-.195.223-.334.334-.556.112-.223.056-.417-.028-.584-.084-.167-.773-1.861-1.061-2.541-.284-.68-.56-.586-.773-.598l-.655-.012c-.223 0-.586.084-.889.417-.304.334-1.164 1.162-1.164 2.826 0 1.664 1.192 3.27 1.36 3.494.167.223 2.37 3.626 5.729 5.092.801.339 1.419.54 1.903.695.801.26 1.524.223 2.088.139.64-.096 2.043-.834 2.336-1.642.284-.8.284-1.472.2-1.64z"/>
-  </svg>
-</a>
+    <!-- FAB WhatsApp con pulso -->
+    <a id="wappFloat" class="wapp-float" href="#" target="_blank" rel="noopener" aria-label="Chat por WhatsApp">
+        <svg class="wa-glyph" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+                d="M16.511 13.757c-.084-.14-.305-.223-.637-.39-.332-.167-1.962-.964-2.266-1.074-.305-.112-.526-.168-.747.167-.223.334-.857 1.073-1.051 1.296-.195.223-.387.25-.718.084-.334-.167-1.408-.518-2.683-1.651-.992-.885-1.661-1.977-1.856-2.311-.194-.334-.021-.515.146-.681.15-.149.334-.387.5-.58.167-.195.223-.334.334-.556.112-.223.056-.417-.028-.584-.084-.167-.773-1.861-1.061-2.541-.284-.68-.56-.586-.773-.598l-.655-.012c-.223 0-.586.084-.889.417-.304.334-1.164 1.162-1.164 2.826 0 1.664 1.192 3.27 1.36 3.494.167.223 2.37 3.626 5.729 5.092.801.339 1.419.54 1.903.695.801.26 1.524.223 2.088.139.64-.096 2.043-.834 2.336-1.642.284-.8.284-1.472.2-1.64z" />
+        </svg>
+    </a>
 
-    <!-- MODAL GALERÍA -->
-    <div id="galleryModal" class="modal" aria-hidden="true" role="dialog" aria-label="Galería de producto">
-        <button class="modal-close" id="modalClose" aria-label="Cerrar">✕</button>
-        <button class="modal-nav" id="modalPrev" aria-label="Anterior">‹</button>
-        <img id="modalImg" alt="" />
-        <button class="modal-nav" id="modalNext" aria-label="Siguiente">›</button>
-        <div id="modalDots" class="modal-dots"></div>
-    </div>
+    <!-- Botón Volver arriba / Ir abajo -->
+    <a href="#top" class="to-top" id="toTop" aria-label="Volver arriba">
+        <svg id="toTopIcon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 19V5m0 0-6 6m6-6 6 6" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round" />
+        </svg>
+    </a>
 
     <script src="script.js"></script>
 </body>
