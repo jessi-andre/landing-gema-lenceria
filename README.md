@@ -1,4 +1,4 @@
-# LUNARA Conjuntos — Landing Catálogo
+# LUNARA — Landing Catálogo
 
 ## Cómo editar
 - Cambiá `WHATSAPP_NUMBER`, `EMAIL_ADDRESS` y `DEFAULT_CURRENCY` en `script.js`.
