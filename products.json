@@ -1,0 +1,154 @@
+[
+  {
+    "id": 1,
+    "name": "Conjunto Luna",
+    "category": "Conjuntos",
+    "availability": "inmediata",
+    "price": 18990,
+    "offer": "10% OFF llevando 2",
+    "images": [
+      "https://images.unsplash.com/photo-1582552955576-379d3c956d63?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1576566588028-4147f3842f27?q=80&w=1200&auto=format&fit=crop"
+    ],
+    "description": "Suave y cómodo. Talles S–XL. Colores: negro, lila, nude."
+  },
+  {
+    "id": 2,
+    "name": "Conjunto Brisa",
+    "category": "Conjuntos",
+    "availability": "pedido",
+    "price": 20990,
+    "offer": "3x2 combinando modelos",
+    "images": [
+      "https://images.unsplash.com/photo-1516641393018-4cc74758b67c?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1555529771-35a38c60b1f8?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1517849845537-4d257902454a?q=80&w=1200&auto=format&fit=crop"
+    ],
+    "description": "Soporte medio. Talles S–XL. Colores: celeste, coral, blanco."
+  },
+  {
+    "id": 3,
+    "name": "Top Nube",
+    "category": "Tops",
+    "availability": "inmediata",
+    "price": 9990,
+    "images": [
+      "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1503342217505-b0a15cf70489?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1519744792095-2f2205e87b6f?q=80&w=1200&auto=format&fit=crop"
+    ],
+    "description": "Top básico para todos los días. Talles S–L."
+  },
+  {
+    "id": 4,
+    "name": "Conjunto Alba",
+    "category": "Conjuntos",
+    "availability": "inmediata",
+    "price": 19990,
+    "images": [
+      "https://images.unsplash.com/photo-1520975693416-35a135c0a79c?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1520975764743-7b7b3b14b5b6?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1520975908799-4e2ab0d16d1e?q=80&w=1200&auto=format&fit=crop"
+    ],
+    "description": "Encaje suave. S–XL. Colores: rojo, negro."
+  },
+  {
+    "id": 5,
+    "name": "Conjunto Aurora",
+    "category": "Conjuntos",
+    "availability": "pedido",
+    "price": 22990,
+    "images": [
+      "https://images.unsplash.com/photo-1544441893-675973e31985?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1520975598621-6a9b7d8bcb0e?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1520975940466-3f1d459c5c8a?q=80&w=1200&auto=format&fit=crop"
+    ],
+    "description": "Copa soft. S–XL. Colores: blanco, nude, rosa."
+  },
+  {
+    "id": 6,
+    "name": "Conjunto Terra",
+    "category": "Conjuntos",
+    "availability": "inmediata",
+    "price": 21990,
+    "images": [
+      "https://images.unsplash.com/photo-1520975432166-44a6f3a1a2dd?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1520975681355-1f3d2e403642?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1520975649714-4a7cb51cb07c?q=80&w=1200&auto=format&fit=crop"
+    ],
+    "description": "Tela microfibra. S–XL. Colores: ocre, verde, gris."
+  },
+  {
+    "id": 7,
+    "name": "Top Cielo",
+    "category": "Tops",
+    "availability": "pedido",
+    "price": 8990,
+    "images": [
+      "https://images.unsplash.com/photo-1520975667181-6b1aeae2bc19?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1520975634873-5f6b1d8b6c4b?q=80&w=1200&auto=format&fit=crop"
+    ],
+    "description": "Top deportivo liviano. S–L."
+  },
+  {
+    "id": 8,
+    "name": "Conjunto Arena",
+    "category": "Conjuntos",
+    "availability": "inmediata",
+    "price": 19990,
+    "images": [
+      "https://images.unsplash.com/photo-1523380744952-b7d0818f0d0d?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1200&auto=format&fit=crop"
+    ],
+    "description": "Clásico y cómodo. S–XL. Beige y marrón."
+  },
+  {
+    "id": 9,
+    "name": "Conjunto Jade",
+    "category": "Conjuntos",
+    "availability": "pedido",
+    "price": 23990,
+    "images": [
+      "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1200&auto=format&fit=crop"
+    ],
+    "description": "Encaje con soporte. S–XL. Verde y negro."
+  },
+  {
+    "id": 10,
+    "name": "Bralette Sol",
+    "category": "Tops",
+    "availability": "inmediata",
+    "price": 10990,
+    "images": [
+      "https://images.unsplash.com/photo-1544441893-675973e31985?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1523380744952-b7d0818f0d0d?q=80&w=1200&auto=format&fit=crop"
+    ],
+    "description": "Bralette de encaje. S–L."
+  },
+  {
+    "id": 11,
+    "name": "Conjunto Mar",
+    "category": "Conjuntos",
+    "availability": "inmediata",
+    "price": 21990,
+    "images": [
+      "https://images.unsplash.com/photo-1516641393018-4cc74758b67c?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1517849845537-4d257902454a?q=80&w=1200&auto=format&fit=crop"
+    ],
+    "description": "Ajuste medio. S–XL. Azul y blanco."
+  },
+  {
+    "id": 12,
+    "name": "Pack Medias",
+    "category": "Accesorios",
+    "availability": "inmediata",
+    "price": 4990,
+    "images": [
+      "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1519744792095-2f2205e87b6f?q=80&w=1200&auto=format&fit=crop"
+    ],
+    "description": "3 pares combinados."
+  }
+]

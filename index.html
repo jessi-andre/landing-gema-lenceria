@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="es-AR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LUNARA | Catálogo</title>
+    <meta name="description"
+        content="LUNARA — Catálogo simple con entrega inmediata y por pedido. Pedidos por WhatsApp. Envíos a todo el país." />
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="#" aria-label="LUNARA inicio">
+                <img src="assets/logo.svg" alt="" class="logo" aria-hidden="true" />
+                <span id="brandWordmark" class="wordmark">LUNARA</span>
+            </a>
+            <nav class="nav">
+                <a href="#catalogo">Catálogo</a>
+                <a href="#como-funciona">Cómo funciona</a>
+                <a href="#faq">Preguntas</a>
+                <a href="#contacto" class="btn btn-primary nav-cta">Contactar</a>
+            </nav>
+            <button id="themeToggle" aria-label="Cambiar tema">🌓</button>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero container">
+        <div class="hero-text">
+            <h1>Conjuntos modernos, cómodos y <span class="highlight">listos para regalar</span></h1>
+            <p>🔥 <strong>Oferta HOY: 10% OFF</strong> en tu primer pedido. 🚚 Envíos a todo el país.</p>
+            <div class="hero-cta">
+                <a id="ctaPrincipal" class="btn btn-primary btn-lg" href="#" target="_blank" rel="noopener">Comprar
+                    ahora</a>
+                <a href="#catalogo" class="btn btn-secondary btn-lg">Ver catálogo completo</a>
+            </div>
+            <ul class="trust">
+                <li>Pago seguro</li>
+                <li>Cambios fáciles</li>
+                <li>Atención por WhatsApp</li>
+            </ul>
+        </div>
+        <div class="hero-visual">
+            <div class="card card-sample">
+                <div class="card-media"></div>
+                <div class="card-body">
+                    <div class="card-head">
+                        <h3>Conjunto Luna</h3>
+                        <span class="badge">Entrega inmediata</span>
+                    </div>
+                    <p class="price">$18.990 ARS</p>
+                    <button class="btn btn-sm">Agregar al pedido</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CATÁLOGO -->
+    <section id="catalogo" class="container">
+        <header class="section-header">
+            <h2>Catálogo</h2>
+            <p>Buscá por nombre o filtrá por categoría y disponibilidad.</p>
+        </header>
+
+        <div class="filters" role="region" aria-label="Filtros de catálogo">
+            <input type="search" id="searchInput" placeholder="Buscar conjunto..." aria-label="Buscar" />
+            <select id="categorySelect" aria-label="Categoría">
+                <option value="all">Todas las categorías</option>
+            </select>
+            <select id="stockSelect" aria-label="Disponibilidad">
+                <option value="all">Todo</option>
+                <option value="inmediata">Entrega inmediata</option>
+                <option value="pedido">Por pedido</option>
+            </select>
+            <select id="sortSelect" aria-label="Orden">
+                <option value="relevance">Ordenar: relevancia</option>
+                <option value="priceAsc">Precio: menor a mayor</option>
+                <option value="priceDesc">Precio: mayor a menor</option>
+            </select>
+        </div>
+
+        <div id="catalogGrid" class="grid" aria-live="polite"></div>
+
+        <div class="load-more-wrap">
+            <button id="loadMore" class="btn btn-outline">Mostrar más</button>
+        </div>
+
+        <!-- CARRITO (desktop bloque / mobile drawer) -->
+        <div class="cart card-box" aria-live="polite" aria-hidden="true">
+            <button id="cartClose" class="cart-close" aria-label="Cerrar carrito">✕</button>
+            <h3>Tu pedido</h3>
+            <ul id="cartList"></ul>
+            <div class="cart-footer">
+                <span id="cartTotal">$0</span>
+                <a id="cartWhatsApp" class="btn btn-primary" href="#" target="_blank" rel="noopener">Finalizar
+                    pedido</a>
+            </div>
+            <p class="small alt-contact">¿Preferís mail? <a id="emailLink" href="#">Escribinos</a></p>
+        </div>
+    </section>
+
+    <!-- CÓMO FUNCIONA (simple) -->
+    <section id="como-funciona" class="container how">
+        <header class="section-header">
+            <h2>¿Cómo funciona?</h2>
+        </header>
+        <ol class="steps">
+            <li><strong>Elegí</strong> tus conjuntos (talle y color).</li>
+            <li><strong>Pedí</strong> por WhatsApp o correo.</li>
+            <li><strong>Recibí</strong> en tu casa o retirás.</li>
+        </ol>
+    </section>
+
+    <!-- PREGUNTAS FRECUENTES (simple) -->
+    <section id="faq" class="container faq">
+        <header class="section-header">
+            <h2>Preguntas frecuentes</h2>
+        </header>
+        <details class="faq-row">
+            <summary>¿Cuánto tarda un pedido?</summary>
+            <p>Entrega inmediata: 24–72 hs. Por pedido: 5–7 días hábiles.</p>
+        </details>
+        <details class="faq-row">
+            <summary>¿Tienen cambios?</summary>
+            <p>Sí, dentro de los 7 días, sin uso y con etiqueta.</p>
+        </details>
+        <details class="faq-row">
+            <summary>¿Qué talles trabajan?</summary>
+            <p>Generalmente S–XL (consultar disponibilidad por modelo).</p>
+        </details>
+    </section>
+
+    <!-- CONTACTO (simple centrado) -->
+    <section id="contacto" class="container contact">
+        <header class="section-header">
+            <h2>Contacto</h2>
+            <p>Contanos qué necesitás y te respondemos hoy.</p>
+        </header>
+        <form id="contactForm" class="contact-form">
+            <input type="text" id="name" placeholder="Tu nombre" required />
+            <input type="email" id="email" placeholder="Tu email" required />
+            <textarea id="message" placeholder="Quiero consultar por..." required></textarea>
+            <button class="btn btn-primary" type="submit">Enviar</button>
+        </form>
+        <p class="small center">WhatsApp directo: <a id="wappLink" href="#" target="_blank" rel="noopener">Abrir
+                chat</a></p>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">LUNARA</div>
+            <ul class="footer-links">
+                <li><a id="footerWapp" href="#" target="_blank" rel="noopener">WhatsApp</a></li>
+                <li><a id="footerInsta" href="#" target="_blank" rel="noopener">@lunara.ar</a></li>
+                <li><a id="footerMail" href="#">hola@lunara.test</a></li>
+                <li><span id="footerPhone">+54 9 11 0000-0000</span></li>
+            </ul>
+            <p class="small">© <span id="year"></span> LUNARA — Hecho con ♥</p>
+        </div>
+    </footer>
+
+    <!-- FAB CARRITO -->
+    <a id="cartFab" class="cart-fab" href="#catalogo" aria-label="Abrir carrito">🛒 <span id="cartCount">0</span></a>
+
+<!-- FAB WhatsApp (círculo CSS + glyph SVG) -->
+<a id="wappFloat"
+   class="wapp-float"
+   href="#"
+   target="_blank"
+   rel="noopener"
+   aria-label="Chat por WhatsApp">
+  <!-- Solo el glyph; el círculo lo pone el CSS -->
+  <svg class="wa-glyph" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M16.511 13.757c-.084-.14-.305-.223-.637-.39-.332-.167-1.962-.964-2.266-1.074-.305-.112-.526-.168-.747.167-.223.334-.857 1.073-1.051 1.296-.195.223-.387.25-.718.084-.334-.167-1.408-.518-2.683-1.651-.992-.885-1.661-1.977-1.856-2.311-.194-.334-.021-.515.146-.681.15-.149.334-.387.5-.58.167-.195.223-.334.334-.556.112-.223.056-.417-.028-.584-.084-.167-.773-1.861-1.061-2.541-.284-.68-.56-.586-.773-.598l-.655-.012c-.223 0-.586.084-.889.417-.304.334-1.164 1.162-1.164 2.826 0 1.664 1.192 3.27 1.36 3.494.167.223 2.37 3.626 5.729 5.092.801.339 1.419.54 1.903.695.801.26 1.524.223 2.088.139.64-.096 2.043-.834 2.336-1.642.284-.8.284-1.472.2-1.64z"/>
+  </svg>
+</a>
+
+    <!-- MODAL GALERÍA -->
+    <div id="galleryModal" class="modal" aria-hidden="true" role="dialog" aria-label="Galería de producto">
+        <button class="modal-close" id="modalClose" aria-label="Cerrar">✕</button>
+        <button class="modal-nav" id="modalPrev" aria-label="Anterior">‹</button>
+        <img id="modalImg" alt="" />
+        <button class="modal-nav" id="modalNext" aria-label="Siguiente">›</button>
+        <div id="modalDots" class="modal-dots"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
