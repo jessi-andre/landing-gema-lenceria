@@ -5,6 +5,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>GEMA | Catálogo</title>
+    <!-- Favicon para todos los navegadores -->
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <!-- Favicons PNG para mayor compatibilidad -->
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    <!-- Icono para dispositivos Apple -->
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+
     <meta name="description"
         content="GEMA — Conjuntos modernos y cómodos. Pedidos por WhatsApp. Envíos a todo el país." />
     <script>document.documentElement.classList.add('js');</script>
@@ -19,26 +27,26 @@
 <body id="top">
     <!-- HEADER -->
     <header class="site-header">
-    <div class="container header-inner">
-        
-        <a class="brand" href="#" aria-label="GEMA inicio">
-            <img src="assets/logo.svg" alt="" class="logo" aria-hidden="true" />
-            <span id="brandWordmark" class="wordmark">GEMA</span>
-        </a>
+        <div class="container header-inner">
 
-        <nav class="nav">
-            <a href="#catalogo">Catálogo</a>
-            <a href="#como-funciona">Cómo funciona</a>
-            <a href="#faq">Preguntas</a>
-            <a href="#contacto" class="btn btn-primary nav-cta">Contactar</a>
-        </nav>
+            <a class="brand" href="#" aria-label="GEMA inicio">
+                <img src="assets/logo.svg" alt="" class="logo" aria-hidden="true" />
+                <span id="brandWordmark" class="wordmark">GEMA</span>
+            </a>
 
-        <!-- Botón hamburguesa -->
-        <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+            <nav class="nav">
+                <a href="#catalogo">Catálogo</a>
+                <a href="#como-funciona">Cómo funciona</a>
+                <a href="#faq">Preguntas</a>
+                <a href="#contacto" class="btn btn-primary nav-cta">Contactar</a>
+            </nav>
 
-        <button id="themeToggle" aria-label="Cambiar tema">🌓</button>
-    </div>
-</header>
+            <!-- Botón hamburguesa -->
+            <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+
+            <button id="themeToggle" aria-label="Cambiar tema">🌓</button>
+        </div>
+    </header>
 
 
     <!-- HERO -->
@@ -262,15 +270,17 @@
 
     <!-- FAB CARRITO -->
     <a id="cartFab" class="cart-fab" href="#catalogo" aria-label="Abrir carrito">🛒 <span id="cartCount">0</span></a>
-<a id="wappFloat" class="wapp-float" href="https://wa.me/5491100000000" target="_blank" rel="noopener"
-   aria-label="Chat por WhatsApp">
+    <a id="wappFloat" class="wapp-float" href="https://wa.me/5491100000000" target="_blank" rel="noopener"
+        aria-label="Chat por WhatsApp">
 
-  <!-- Logo oficial WhatsApp -->
-  <svg class="wa-glyph" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true">
-    <path fill="#25D366" d="M16 0C7.164 0 0 7.163 0 16c0 2.818.73 5.584 2.109 8.03L0 32l8.28-2.064C10.62 31.255 13.285 32 16 32c8.836 0 16-7.163 16-16S24.836 0 16 0z"/>
-    <path fill="#FFF" d="M23.334 18.933c-.38-.19-2.252-1.11-2.602-1.237-.35-.127-.606-.19-.862.19-.256.38-.988 1.236-1.212 1.493-.223.256-.447.287-.828.096-.38-.19-1.604-.59-3.057-1.88-1.13-1.008-1.892-2.253-2.115-2.633-.223-.38-.024-.586.167-.776.172-.172.38-.447.57-.67.19-.223.254-.38.38-.636.127-.256.064-.48-.032-.67-.096-.19-.862-2.08-1.18-2.848-.31-.74-.627-.64-.862-.65-.223-.01-.48-.012-.737-.012s-.67.096-1.02.48c-.35.383-1.34 1.308-1.34 3.192 0 1.884 1.372 3.7 1.562 3.956.19.256 2.698 4.122 6.54 5.78.914.395 1.626.63 2.18.805.915.291 1.748.25 2.406.152.735-.11 2.252-.92 2.57-1.808.318-.888.318-1.648.223-1.808-.096-.16-.35-.254-.73-.445z"/>
-  </svg>
-</a>
+        <!-- Logo oficial WhatsApp -->
+        <svg class="wa-glyph" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true">
+            <path fill="#25D366"
+                d="M16 0C7.164 0 0 7.163 0 16c0 2.818.73 5.584 2.109 8.03L0 32l8.28-2.064C10.62 31.255 13.285 32 16 32c8.836 0 16-7.163 16-16S24.836 0 16 0z" />
+            <path fill="#FFF"
+                d="M23.334 18.933c-.38-.19-2.252-1.11-2.602-1.237-.35-.127-.606-.19-.862.19-.256.38-.988 1.236-1.212 1.493-.223.256-.447.287-.828.096-.38-.19-1.604-.59-3.057-1.88-1.13-1.008-1.892-2.253-2.115-2.633-.223-.38-.024-.586.167-.776.172-.172.38-.447.57-.67.19-.223.254-.38.38-.636.127-.256.064-.48-.032-.67-.096-.19-.862-2.08-1.18-2.848-.31-.74-.627-.64-.862-.65-.223-.01-.48-.012-.737-.012s-.67.096-1.02.48c-.35.383-1.34 1.308-1.34 3.192 0 1.884 1.372 3.7 1.562 3.956.19.256 2.698 4.122 6.54 5.78.914.395 1.626.63 2.18.805.915.291 1.748.25 2.406.152.735-.11 2.252-.92 2.57-1.808.318-.888.318-1.648.223-1.808-.096-.16-.35-.254-.73-.445z" />
+        </svg>
+    </a>
 
     <!-- Volver arriba / abajo -->
     <a href="#top" class="to-top" id="toTop" aria-label="Volver arriba">
