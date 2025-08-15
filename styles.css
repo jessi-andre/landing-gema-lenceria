@@ -23,7 +23,7 @@ body {
     background: var(--bg);
     color: var(--text);
     font-family: Inter, system-ui, Segoe UI, Roboto, Arial, sans-serif;
-    line-height: 1.5;
+    line-height: 1.5
 }
 
 img {
@@ -63,6 +63,11 @@ small {
     backdrop-filter: saturate(170%) blur(8px);
     border-bottom: 1px solid var(--border);
     z-index: 10;
+    transition: transform .2s ease
+}
+
+.site-header.hide {
+    transform: translateY(-100%)
 }
 
 .header-inner {
@@ -131,7 +136,7 @@ small {
     grid-template-columns: 1.1fr .9fr;
     gap: 28px;
     align-items: center;
-    padding: 32px 0;
+    padding: 32px 0
 }
 
 .hero h1 {
@@ -171,7 +176,7 @@ small {
     cursor: pointer;
     font-family: Poppins, Inter, sans-serif;
     font-weight: 600;
-    transition: transform .15s ease, box-shadow .15s ease;
+    transition: transform .15s ease, box-shadow .15s ease
 }
 
 .btn-lg {
@@ -215,19 +220,20 @@ small {
     border-radius: 10px
 }
 
-/* HERO sample card media (solo hero) */
+/* HERO sample card media */
 .hero-visual .card-sample {
     border: 1px solid var(--border);
     border-radius: 18px;
     overflow: hidden;
     background: var(--card);
-    box-shadow: var(--shadow);
+    box-shadow: var(--shadow)
 }
+
 .hero-visual .card-sample .card-media {
-  height: 180px;
-  background-image: url("img/lenceria1.jpeg");
-  background-size: cover;       /* que se recorte sin deformar */
-  background-position: center;  /* centrada */
+    height: 250px;
+    background-image: url("img/lenceriaroja.jpeg");
+    background-size: cover;
+    background-position: center
 }
 
 .card-body {
@@ -254,7 +260,7 @@ small {
     border-radius: 10px;
     border: 1px solid var(--border);
     background: #fff;
-    min-width: 180px;
+    min-width: 180px
 }
 
 /* Grid & Cards */
@@ -274,18 +280,71 @@ small {
     flex-direction: column;
     box-shadow: 0 2px 10px rgba(0, 0, 0, .04);
     transition: transform .18s ease, box-shadow .18s ease;
-    height: 100%;
+    height: 100%
 }
 
-/* IMAGEN de las cards del catálogo */
-.media {
+/* Slider en card */
+.media-slider {
+    position: relative;
+    overflow: hidden;
+    height: 240px;
+    background: #f5f6f8
+}
+
+.media-slider .slides {
+    display: flex;
+    transition: transform .36s ease
+}
+
+.media-slider img {
     width: 100%;
-    height: 200px;
+    height: 240px;
     object-fit: cover;
-    /* recorta sin deformar */
-    display: block;
-    border-top-left-radius: 18px;
-    border-top-right-radius: 18px;
+    flex: 0 0 100%
+}
+
+.media-slider .dot-wrap {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 8px;
+    display: flex;
+    gap: 6px;
+    justify-content: center
+}
+
+.media-slider .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: #ffffffbb;
+    border: 1px solid #00000022
+}
+
+.media-slider .dot.active {
+    background: #fff
+}
+
+.media-slider .nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: #ffffffd9;
+    display: grid;
+    place-items: center;
+    cursor: pointer
+}
+
+.media-slider .prev {
+    left: 8px
+}
+
+.media-slider .next {
+    right: 8px
 }
 
 .card .body {
@@ -321,11 +380,6 @@ small {
     box-shadow: var(--shadow-strong)
 }
 
-.card:hover .media,
-.card:focus-within .media {
-    transform: scale(1.03)
-}
-
 .card a:focus-visible,
 .card button:focus-visible {
     outline: 2px solid var(--primary);
@@ -349,14 +403,15 @@ html:not(.js) .card.reveal {
     transform: none
 }
 
-/* Mostrar más */
+/* Mostrar más / Ver menos */
 .load-more-wrap {
     display: flex;
+    gap: 10px;
     justify-content: center;
     margin: 10px 0 0
 }
 
-/* Carrito */
+/* Carrito (bloque existente) */
 .card-box {
     background: var(--card);
     border: 1px solid var(--border);
@@ -419,42 +474,43 @@ html:not(.js) .card.reveal {
     text-decoration: none;
     box-shadow: 0 8px 22px #00000025;
     border: 1px solid #00000010;
-    z-index: 60;
+    z-index: 60
 }
 
 .cart-fab:hover {
     background: var(--primary-press)
 }
 
-/* WhatsApp FAB con pulso */
 .wapp-float {
     position: fixed;
     right: 16px;
     bottom: 96px;
-    width: 64px;
-    height: 64px;
+    width: 50px;
+    height: 50px;
     display: grid;
     place-items: center;
-    background: #25D366;
     border-radius: 50%;
+    /* el SVG ya trae el círculo verde, así que el fondo puede ser transparente */
+    background: transparent;
     box-shadow: 0 14px 28px rgba(0, 0, 0, .18);
-    border: 1px solid #00000010;
+    border: 0;
     z-index: 60;
     transition: transform .18s ease, box-shadow .18s ease;
 }
-
 .wapp-float:hover {
     transform: translateY(-2px);
-    box-shadow: 0 18px 36px rgba(0, 0, 0, .22)
+    box-shadow: 0 18px 36px rgba(0, 0, 0, .22);
 }
 
+
+
+* Tamaño del SVG */
 .wapp-float .wa-glyph {
-    width: 28px;
-    height: 28px;
+    width: 42px;
+    height: 42px;
     display: block;
-    fill: #fff
 }
-
+/* Pulso conserva el color verde oficial */
 .wapp-float::before {
     content: "";
     position: absolute;
@@ -464,6 +520,9 @@ html:not(.js) .card.reveal {
     animation: wappPulse 2.2s ease-out infinite;
     z-index: -1;
 }
+
+
+
 
 @keyframes wappPulse {
     0% {
@@ -512,7 +571,7 @@ html:not(.js) .card.reveal {
     padding: 12px;
     border-radius: 12px;
     border: 1px solid var(--border);
-    background: #fff;
+    background: #fff
 }
 
 .contact-form textarea {
@@ -531,7 +590,7 @@ html:not(.js) .card.reveal {
     gap: 32px;
     align-items: start;
     grid-template-columns: 1.2fr 1fr 1fr;
-    padding: 32px 0 24px;
+    padding: 32px 0 24px
 }
 
 .f3-title {
@@ -568,7 +627,7 @@ html:not(.js) .card.reveal {
     color: #111827;
     text-decoration: none;
     box-shadow: 0 4px 12px rgba(0, 0, 0, .05);
-    transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+    transition: transform .15s ease, box-shadow .15s ease, background .15s ease
 }
 
 .chip:hover {
@@ -636,22 +695,23 @@ html:not(.js) .card.reveal {
 }
 
 .f3-copy-inner {
+    max-width: 680px;
+    margin: 0 auto;
     display: flex;
     justify-content: center;
-    padding: 12px 0 18px
 }
 
 .f3-copy .heart {
     color: #e11d48
 }
 
-/* Botón volver arriba / ir abajo */
+/* Botón volver arriba */
 .to-top {
     position: fixed;
     right: 16px;
     bottom: 168px;
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     background: #222;
     display: grid;
@@ -660,7 +720,7 @@ html:not(.js) .card.reveal {
     text-decoration: none;
     z-index: 60;
     opacity: .92;
-    transition: transform .15s ease, opacity .15s ease;
+    transition: transform .15s ease, opacity .15s ease
 }
 
 .to-top:hover {
@@ -671,6 +731,87 @@ html:not(.js) .card.reveal {
 .to-top svg {
     width: 26px;
     height: 26px
+}
+
+/* ======= MODAL RESUMEN CARRITO ======= */
+.cart-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .45);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 80;
+    padding: 16px;
+}
+
+.cart-modal.open {
+    display: flex;
+}
+
+.cart-modal__dialog {
+    width: min(520px, 92%);
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    box-shadow: var(--shadow-strong);
+    padding: 18px 18px 14px;
+}
+
+.cart-modal__dialog h3 {
+    margin: 0 0 10px;
+    font-family: Poppins, Inter, sans-serif
+}
+
+.cart-modal__close {
+    position: absolute;
+    right: 24px;
+    top: 22px;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: #fff;
+    cursor: pointer;
+}
+
+.cart-modal__list {
+    list-style: none;
+    margin: 8px 0 10px;
+    padding: 0;
+    display: grid;
+    gap: 8px;
+}
+
+.cart-modal__list li {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 8px;
+    align-items: center;
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: #fafafa;
+}
+
+.cart-modal__list .mono {
+    font-variant-numeric: tabular-nums;
+}
+
+.cart-modal__list .remove {
+    border: 1px solid var(--border);
+    background: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 2px 8px;
+}
+
+.cart-modal__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 6px;
 }
 
 /* Responsive */
@@ -701,7 +842,7 @@ html:not(.js) .card.reveal {
         z-index: 30;
         background: var(--card);
         border: 1px solid var(--border);
-        box-shadow: var(--shadow-strong);
+        box-shadow: var(--shadow-strong)
     }
 
     .cart.open {
@@ -724,7 +865,7 @@ html:not(.js) .card.reveal {
         position: absolute;
         right: 12px;
         top: 12px;
-        cursor: pointer;
+        cursor: pointer
     }
 
     .to-top {
@@ -750,45 +891,253 @@ html:not(.js) .card.reveal {
     }
 }
 
-/* Dark mode */
+
+/* ======= FOOTER RESPONSIVE (CELULARES) ======= */
+
+/* ====== NAV RESPONSIVE ====== */
+/* ====== NAV RESPONSIVE ====== */
+@media (max-width: 768px) {
+  .site-header nav {
+    display: none; /* Oculto por defecto en móvil */
+  }
+
+  .site-header nav.active {
+    display: flex;                 /* Mostrar cuando está activo */
+    flex-direction: column;
+    gap: 12px;
+    position: absolute;
+    right: 12px;
+    top: 60px;                     /* ajustá si tu header es más alto */
+    width: 220px;
+    padding: 12px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: var(--shadow-strong);
+    z-index: 1000;
+  }
+
+  .menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: var(--text);
+    cursor: pointer;
+  }
+}
+
+@media (min-width: 769px) {
+  .menu-toggle {
+    display: none;
+  }
+}
+
+
+@media (max-width:560px) {
+  .footer-f3 .footer-wrap{
+    grid-template-columns: 1fr;   /* apilar columnas */
+    gap: 24px;
+    padding: 24px 0 18px;
+  }
+
+  /* Marca + texto */
+  .f3-title{
+    font-size: 1.25rem;
+  }
+  .f3-text{
+    font-size: .95rem;
+  }
+
+  /* CTA ocupa todo el ancho en móvil */
+  .f3-cta {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 16px;
+    margin-top: 8px;
+  }
+
+  /* Chips sociales alineadas a la izquierda y con wrap */
+  .f3-social{
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  /* Navegación en 2 columnas para que no quede larga */
+  .f3-nav ul{
+    grid-template-columns: 1fr 1fr;
+    display: grid;
+    gap: 8px 16px;
+  }
+
+  /* Contacto: títulos y valores con mejor separación */
+  .f3-contact dt{
+    margin-top: 10px;     /* más aire entre secciones */
+    font-size: .98rem;
+  }
+  .f3-contact dd{
+    font-size: .98rem;
+  }
+
+  /* Copy del pie: más compacto y centrado */
+  .f3-copy-inner{
+    padding: 12px 0 14px;
+    text-align: center;
+  }
+}
+
+/* ====== HERO MOBILE  ====== */
+@media (max-width: 560px) {
+  .hero {
+    grid-template-columns: 1fr;   /* ya apila, reforzamos */
+    gap: 16px;
+    padding: 18px 0 8px;
+  }
+
+  .hero h1 {
+    /* Tamaño más cómodo y consistente en móviles */
+    font-size: clamp(26px, 7vw, 34px);
+    line-height: 1.15;
+    letter-spacing: .2px;
+    margin: 0 0 10px;
+  }
+
+  .hero-cta {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .hero-cta .btn {
+    width: 100%;
+    text-align: center;
+    padding: 12px 16px;
+    font-size: 16px;
+  }
+
+  .trust {
+    gap: 12px;
+    margin-top: 10px;
+    font-size: .95rem;
+  }
+
+  /* Visual del hero más compacto y debajo del texto */
+  .hero-visual {
+    order: 2;
+    margin-top: 4px;
+  }
+  .hero-visual .card-sample {
+    border-radius: 16px;
+  }
+  .hero-visual .card-sample .card-media {
+    height: 200px;               /* antes 250px */
+  }
+  .hero-visual .card-body {
+    padding: 12px;
+  }
+}
+
+
+/* =========================
+   Dark mode (reemplaza tu bloque)
+   ========================= */
 :root.dark {
-    --bg: #0f172a;
-    --text: #E5E7EB;
-    --border: #2a3347;
-    --card: #101827;
-    --shadow: 0 8px 22px rgba(0, 0, 0, .45);
-    --shadow-strong: 0 18px 36px rgba(0, 0, 0, .6);
+  --bg: #0f172a;       /* fondo */
+  --text: #e5e7eb;     /* texto */
+  --border: #2a3347;   /* bordes */
+  --card: #101827;     /* tarjetas / cajas */
+  --shadow: 0 8px 22px rgba(0, 0, 0, .45);
+  --shadow-strong: 0 18px 36px rgba(0, 0, 0, .6);
 }
 
-:root.dark .nav a:hover {
-    background: #ffffff10
+/* Header pegajoso en dark */
+:root.dark .site-header{
+  background: rgba(16, 24, 39, .9);
+  border-bottom-color: var(--border);
 }
 
+/* Inputs / selects filtros y formulario */
 :root.dark .filters input,
 :root.dark .filters select,
 :root.dark .contact-form input,
-:root.dark .contact-form textarea {
-    background: #0b1220;
-    border-color: #2a3347;
-    color: var(--text)
+:root.dark .contact-form textarea{
+  background:#0b1220;
+  border-color:#2a3347;
+  color:var(--text);
 }
 
-:root.dark .badge {
-    background: #0b1220;
-    border-color: #2a3347
+/* Tarjetas y cajas */
+:root.dark .card,
+:root.dark .card-box,
+:root.dark .hero-visual .card-sample{
+  background: var(--card);
+  border-color: var(--border);
+  color: var(--text);
 }
 
-/* Ocultar flechas/botones raros */
-button[aria-label="Previous"],
-button[aria-label="Next"] {
-    display: none !important;
+/* Botón “outline” en dark (hover sutil) */
+:root.dark .btn-outline:hover{
+  background: #ffffff12;
 }
 
-button {
-    position: relative;
-    z-index: 1000;
+/* Badge en dark */
+:root.dark .badge{
+  background:#0b1220;
+  border-color:#2a3347;
+  color: var(--text);
 }
 
-body>button {
-    display: none !important;
+/* Slider dentro de cards */
+:root.dark .media-slider{
+  background:#0b1220;
+}
+:root.dark .media-slider .nav-btn{
+  background:#0b1220cc;
+  border-color:#2a3347;
+  color:var(--text);
+}
+:root.dark .media-slider .dot{
+  background:#ffffff66;
+  border-color:#00000033;
+}
+:root.dark .media-slider .dot.active{
+  background:#fff;
+}
+
+/* Chips (iconos redondos del footer) */
+:root.dark .chip{
+  background:#0b1220;
+  color:var(--text);
+  border-color:#2a3347;
+}
+
+/* Footer y copy angosta */
+:root.dark .footer-f3{
+  background:#0c1426;
+  border-top-color: var(--border);
+}
+:root.dark .f3-copy{
+  background:#0c1426;
+  border-top-color: var(--border);
+}
+:root.dark .f3-text,
+:root.dark .f3-nav a,
+:root.dark .f3-contact a{
+  color: #cbd5e1;
+}
+:root.dark .f3-nav a:hover,
+:root.dark .f3-contact a:hover{
+  color: var(--primary);
+}
+
+/* Botón volver arriba (deja el mismo color pero mejora contraste si querés) */
+/* opcional:
+:root.dark .to-top{ background:#111827; }
+*/
+
+/* Ajuste del FAB WhatsApp (se mantiene igual en ambos temas) */
+:root.dark .wapp-float{ box-shadow: 0 14px 28px rgba(0,0,0,.5); }
+
+
+:root.dark .f3-contact dt {
+  color: #cbd5e1; 
 }
