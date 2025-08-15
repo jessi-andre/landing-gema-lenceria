@@ -1,10 +1,39 @@
-# LUNARA — Landing Catálogo
+# 🌸 GEMA | Landing Page
 
-- Editá `WHATSAPP_NUMBER`, `EMAIL_ADDRESS` y `DEFAULT_CURRENCY` en `script.js`.
-- Agregá/actualizá productos en `products.json`.
-- El header muestra solo la palabra **LUNARA**. El `<img>` del logo queda oculto por CSS para usar más adelante.
+Landing page moderna y responsive para **GEMA**, una marca enfocada en conjuntos de lencería cómodos y modernos.  
+Este proyecto fue diseñado para ofrecer una experiencia atractiva en dispositivos móviles y desktop, con un enfoque en **conversión y navegación intuitiva**.
 
-## Publicar en GitHub Pages
-1. Repo → **Settings** (del repo) → **Pages**.
-2. **Deploy from a branch** → Branch: `main` → Folder: `/ (root)` → **Save**.
-3. URL: `https://<usuario>.github.io/<repo>/`
+---
+
+## 📋 Características
+
+- **Diseño responsive**: Adaptado a cualquier tamaño de pantalla (desktop, tablet, móvil).
+- **Menú hamburguesa**: Visible en dispositivos móviles y fácil de usar.
+- **Estética profesional**: Tipografía limpia, colores de marca y secciones bien definidas.
+- **Secciones principales**:
+  - **Hero** con título, subtítulo y botones de llamada a la acción (CTA).
+  - **Catálogo** de productos.
+  - **Cómo funciona**: explicación del proceso de compra.
+  - **Preguntas frecuentes (FAQ)**.
+  - **Contacto** con información de WhatsApp, email y ubicación.
+- **Optimización UX/UI**: Microinteracciones, jerarquía visual y llamados claros a la acción.
+
+---
+
+## 🛠️ Tecnologías utilizadas
+
+- **HTML5** → Estructura del sitio.
+- **CSS3** → Estilos, layout y diseño responsive.
+- **JavaScript (ES6)** → Funcionalidad del menú móvil y mejoras de interacción.
+- **Git & GitHub** → Control de versiones y despliegue.
+
+---
+
+## 📂 Estructura del proyecto
+
+```plaintext
+📁 img/                # Imágenes y recursos gráficos
+📄 index.html          # Estructura principal de la página
+📄 styles.css          # Estilos del sitio
+📄 script.js           # Funciones JavaScript (menú móvil, etc.)
+📄 README.md           # Este documento
